@@ -4,6 +4,7 @@ import moment from "moment"
 
 describe("timeInBinary", () => {
 	test("throw if no-moment/nothing was passed", () => {
-		expect(() => timeInBinary()).not.toThrow()
+		expect(() => timeInBinary()).toThrow()
+		expect(() => timeInBinary(moment())).not.toThrow()
 	})
 })
