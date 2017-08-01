@@ -7,15 +7,21 @@
     "test": "npx jest"
   },
   "dependencies": {
+    "left-pad": "^1.1.3",
+    "moment": "^2.18.1"
+  },
+  "devDependencies": {
     "babel-core": "^6.24.1",
+    "babel-eslint": "^7.2.3",
     "babel-loader": "^7.0.0",
     "babel-preset-env": "^1.5.1",
+    "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "eslint": "^4.2.0",
     "eslint-plugin-jest": "^20.0.3",
     "eslint-plugin-react": "^7.1.0",
     "jest": "^20.0.4",
-    "left-pad": "^1.1.3",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "webpack": "^3.0.0",
