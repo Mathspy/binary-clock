@@ -24,7 +24,7 @@ export default class App extends React.Component {
 	constructor() {
 		super();
 
-		this.state = {now: moment(), shape: "Triangle"}
+		this.state = {now: moment(), shape: "Traingle"}
 	}
 
 	componentDidMount() {
