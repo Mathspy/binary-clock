@@ -7,7 +7,8 @@ export default function(time) {
 		timeInBCD[0][0] = timeInBCD[0][0].substring(2)
 		timeInBCD[1][0] = timeInBCD[1][0].substring(1)
 		timeInBCD[2][0] = timeInBCD[2][0].substring(1)
-		return timeInBCD
+		let flattened = timeInBCD.reduce((flattened, array) => flattened.concat(array.map(value => value.split("").map(string => string === "0" ? false : true))), [])
+		return flattened
 	} else {
 		throw new Error("Invalid time!")
 	}

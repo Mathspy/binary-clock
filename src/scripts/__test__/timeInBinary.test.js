@@ -8,15 +8,15 @@ describe("timeInBinary", () => {
 		expect(() => timeInBinary(moment())).not.toThrow()
 	})
 
-	test("if given time, returns [hh, mm, ss]", () => {
+	test("if given time, returns correct output", () => {
 		let its5 = moment("05:35:07", "HH:mm:ss")
-		expect(timeInBinary(its5)).toEqual([["00", "0101"], ["011", "0101"], ["000", "0111"]])
+		expect(timeInBinary(its5)).toEqual([[false, false], [false, true, false, true], [false, true, true], [false, true, false, true], [false, false, false], [false, true, true, true]])
 
 		let timegoesfast = moment("23:59:59", "HH:mm:ss")
-		expect(timeInBinary(timegoesfast)).toEqual([["10", "0011"], ["101", "1001"], ["101", "1001"]])
+		expect(timeInBinary(timegoesfast)).toEqual([[true, false], [false, false, true, true], [true, false, true], [true, false, false, true], [true, false, true], [true, false, false, true]])
 
 		let goodwork = moment("00:00:00", "HH:mm:ss")
-		expect(timeInBinary(goodwork)).toEqual([["00", "0000"], ["000", "0000"], ["000", "0000"]])
+		expect(timeInBinary(goodwork)).toEqual([[false, false], [false, false, false, false], [false, false, false], [false, false, false, false], [false, false, false], [false, false, false, false]])
 	})
 })
 

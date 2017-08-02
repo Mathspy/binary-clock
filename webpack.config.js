@@ -1,16 +1,12 @@
 var debug = process.env.NODE_ENV !== "production";
-var path = require("path");
 
 module.exports = {
-	context: __dirname,
+	context: __dirname +  "/build",
 	devtool: debug ? "inline-sourcemap" : null,
-	entry: "./src/scripts/index.js",
+	entry: "../src/scripts/index.js",
 	output: {
-		filename: "bundle.js",
-		path: path.join(__dirname, "build")
-	},
-	resolve: {
-		modules: ["src/scripts", "node_modules"]
+		path: __dirname +  "/build",
+		filename: "./bundle.js"
 	},
 	module: {
 		loaders: [
@@ -20,6 +16,9 @@ module.exports = {
 				loader: "babel-loader"
 			}
 		]
+	},
+	devServer: {
+		publicPath: "/build/",
 	}
 };
 

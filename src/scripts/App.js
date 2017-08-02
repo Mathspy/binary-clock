@@ -1,15 +1,50 @@
 import React from "react";
+import moment from "moment";
 
-class App extends React.Component {
+import timeInBinary from "./timeInBinary"
+import Column from "./Column"
+
+let style = {
+	display: "flex",
+	justifyContent: "center",
+	alignItems: "center",
+	width: "100vw",
+	height: "100vh",
+}
+
+export default class App extends React.Component {
 	constructor() {
 		super();
+
+		this.state = {now: moment()}
+	}
+
+	componentDidMount() {
+		this.timerID = setInterval(
+			() => this.tick(),
+			1000
+		);
+	}
+
+	componentWillUnmount() {
+		clearInterval(this.timerID);
+	}
+
+	tick() {
+		this.setState({
+			now: moment()
+		});
 	}
 
 	render() {
 		return (
-			<h1>Hello World</h1>
+			<div style={style}>
+				<div style={{display: "flex", alignItems: "stretch"}}>
+					{timeInBinary(this.state.now).map((column, i) =>
+						<Column data={column} rightPad ={(i !== 1 && i !== 3) ? false : true} />
+					)}
+				</div>
+			</div>
 		);
 	}
 }
-
-export default App;
