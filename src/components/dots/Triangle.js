@@ -8,20 +8,29 @@ import { useSpring, animated } from "react-spring";
   - With React Spring the solution also seemed far away. Until I found the reset option which allows the animation to start over making it easily toggleable
   - The remaining problem was that when the "from" property is passed the component animates on mount
   - This was solved by dismissing animations and then imperatively mutating a reference after mount that would stop dismissal of animations on subsequent toggles
+
+  Take two:
+  - This worked great until more complex components got involved as reset meant that the animation will actually reset every single re-render
+  - Again that behaviour was undesirable so another reference that preserves the previous state was needed to dismiss resets when the state was unchanged
 */
 
 const Triangle = ({ on }) => {
   const dismissAnimation = useRef(true);
+  const previousState = useRef(on);
   const props = useSpring({
     from: { angle: on ? 180 : 0 },
     to: { angle: on ? 360 : 180 },
-    reset: true,
+    reset: previousState.current !== on,
     immediate: dismissAnimation.current
   });
 
   useEffect(() => {
     dismissAnimation.current = false;
   }, []);
+
+  useEffect(() => {
+    previousState.current = on;
+  }, [on]);
 
   return (
     <animated.div
