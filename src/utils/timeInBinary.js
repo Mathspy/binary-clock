@@ -1,4 +1,4 @@
-import { isDate, getSeconds, getMinutes, getHours } from "date-fns";
+import { isValid, getSeconds, getMinutes, getHours } from "date-fns";
 import leftPad from "left-pad";
 
 /**
@@ -17,11 +17,11 @@ import leftPad from "left-pad";
  * // ]
  */
 export default function timeInBinary(date) {
-  if (isDate(date)) {
+  if (isValid(date)) {
     return [
       numberToBCD(getHours(date), 6),
       numberToBCD(getMinutes(date), 7),
-      numberToBCD(getSeconds(date), 7),
+      numberToBCD(getSeconds(date), 7)
     ];
   } else {
     throw TypeError("Invalid Date");

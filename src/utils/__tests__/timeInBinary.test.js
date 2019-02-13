@@ -4,7 +4,7 @@ describe("timeInBinary", () => {
   it("throw if no date  or nothing was passed", () => {
     expect(() => timeInBinary()).toThrow();
     expect(() => timeInBinary("test")).toThrow();
-    expect(() => timeInBinary(123)).toThrow();
+    expect(() => timeInBinary(123)).not.toThrow();
     expect(() => timeInBinary(new Date())).not.toThrow();
   });
 
@@ -13,28 +13,28 @@ describe("timeInBinary", () => {
     expect(timeInBinary(exactly5)).toEqual([
       [[false, false], [false, true, false, true]],
       [[false, false, false], [false, false, false, false]],
-      [[false, false, false], [false, false, false, false]],
+      [[false, false, false], [false, false, false, false]]
     ]);
 
     let time123456 = new Date("1970-01-01T12:34:56");
     expect(timeInBinary(time123456)).toEqual([
       [[false, true], [false, false, true, false]],
       [[false, true, true], [false, true, false, false]],
-      [[true, false, true], [false, true, true, false]],
+      [[true, false, true], [false, true, true, false]]
     ]);
 
     let lastSecondOfDay = new Date("1970-01-01T23:59:59");
     expect(timeInBinary(lastSecondOfDay)).toEqual([
       [[true, false], [false, false, true, true]],
       [[true, false, true], [true, false, false, true]],
-      [[true, false, true], [true, false, false, true]],
+      [[true, false, true], [true, false, false, true]]
     ]);
 
     let unixEpoch = new Date("1970-01-01T00:00:00");
     expect(timeInBinary(unixEpoch)).toEqual([
       [[false, false], [false, false, false, false]],
       [[false, false, false], [false, false, false, false]],
-      [[false, false, false], [false, false, false, false]],
+      [[false, false, false], [false, false, false, false]]
     ]);
   });
 });
@@ -43,12 +43,12 @@ describe("numberToBCD", () => {
   it("should return correctly padded arrays", () => {
     expect(numberToBCD(5, 7)).toEqual([
       [false, false, false],
-      [false, true, false, true],
+      [false, true, false, true]
     ]);
 
     expect(numberToBCD(19, 6)).toEqual([
       [false, true],
-      [true, false, false, true],
+      [true, false, false, true]
     ]);
   });
 
