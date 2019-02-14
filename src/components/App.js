@@ -1,11 +1,17 @@
 import React, { useState, useReducer, useEffect } from "react";
 
 import useInterval from "../hooks/useInterval";
+import useWindowSize from "../hooks/useWindowSize";
 
 import Clock from "./Clock";
 import * as dots from "./dots";
 
 const dotNames = Object.keys(dots);
+
+// 940 is the static width of the clock
+// 600 is the static height of the clock
+const minWidth = 940 / 0.95;
+const minHeight = 600 / 0.95;
 
 function reducer(state, action) {
   switch (action.type) {
@@ -29,6 +35,7 @@ const App = () => {
     popupVisibility: false,
     popupTimer: true
   });
+  const { width, height } = useWindowSize();
 
   useInterval(() => {
     setTime(new Date());
@@ -40,9 +47,14 @@ const App = () => {
     }
   }, [state.popupTimer]);
 
+  let scale = 1;
+  if (width < minWidth || height < minHeight) {
+    scale = Math.min((width * 0.95) / 940, (height * 0.95) / 600);
+  }
+
   return (
     <div
-      style={{ height: "100%" }}
+      style={{ height: "100%", transform: `scale(${scale})` }}
       onClick={() => dispatch({ type: "changeDot" })}
     >
       <Clock time={time} Shape={dots[dotNames[state.dotIndex]]} />
@@ -54,9 +66,9 @@ const App = () => {
             top: "50px",
             backgroundColor: "black",
             color: "white",
-            opacity: 0.3,
+            opacity: 0.6,
             padding: "5px",
-            fontSize: "24px",
+            fontSize: "36px",
             userSelect: "none"
           }}
         >
