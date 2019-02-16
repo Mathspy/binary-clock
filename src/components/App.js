@@ -6,6 +6,7 @@ import useInterval from "../hooks/useInterval";
 import useWindowSize from "../hooks/useWindowSize";
 
 import Clock from "./Clock";
+import Popup from "./Popup";
 import * as dots from "./dots";
 
 const dotNames = Object.keys(dots);
@@ -57,27 +58,13 @@ const App = () => {
 
   return (
     <div
-      css={{ height: "100%", transform: `scale(${scale})` }}
+      css={{ height: "100%" }}
       onClick={() => dispatch({ type: "changeDot" })}
     >
-      <Clock time={time} Shape={dots[dotNames[state.dotIndex]]} />
-      {state.popupVisibility && (
-        <div
-          css={{
-            position: "absolute",
-            left: "50px",
-            top: "50px",
-            backgroundColor: "black",
-            color: "white",
-            opacity: 0.6,
-            padding: "5px",
-            fontSize: "36px",
-            userSelect: "none"
-          }}
-        >
-          Click Anywhere!
-        </div>
-      )}
+      <div css={{ height: "100%", transform: `scale(${scale})` }}>
+        <Clock time={time} Shape={dots[dotNames[state.dotIndex]]} />
+      </div>
+      {state.popupVisibility && <Popup>Click Anywhere!</Popup>}
     </div>
   );
 };
