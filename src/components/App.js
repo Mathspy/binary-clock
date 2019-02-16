@@ -9,6 +9,8 @@ import Clock from "./Clock";
 import Popup from "./Popup";
 import * as dots from "./dots";
 
+import FullScreen from "./icons/FullScreen";
+
 const dotNames = Object.keys(dots);
 
 // 940 is the static width of the clock
@@ -58,9 +60,21 @@ const App = () => {
 
   return (
     <div
-      css={{ height: "100%" }}
+      css={{ height: "100%", background: "#fff" }}
       onClick={() => dispatch({ type: "changeDot" })}
     >
+      <div
+        css={{
+          width: "48px",
+          position: "absolute",
+          right: 0,
+          cursor: "pointer",
+          zIndex: 1
+        }}
+      >
+        {/* This is a pesudo-ref since API accepts a ref */}
+        <FullScreen elementRef={{ current: document.body }} />
+      </div>
       <div css={{ height: "100%", transform: `scale(${scale})` }}>
         <Clock time={time} Shape={dots[dotNames[state.dotIndex]]} />
       </div>
