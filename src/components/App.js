@@ -45,7 +45,8 @@ const App = () => {
 
   useEffect(() => {
     if (state.popupTimer) {
-      setTimeout(() => dispatch({ type: "showPopup" }), 3000);
+      const timeoutID = setTimeout(() => dispatch({ type: "showPopup" }), 3000);
+      return () => clearTimeout(timeoutID);
     }
   }, [state.popupTimer]);
 
