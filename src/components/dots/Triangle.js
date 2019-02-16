@@ -1,4 +1,6 @@
-import React, { useRef, useEffect } from "react";
+/** @jsx jsx */
+import { jsx } from "@emotion/core";
+import { useRef, useEffect } from "react";
 import { useSpring, animated } from "react-spring";
 
 /*
@@ -34,12 +36,14 @@ const Triangle = ({ on }) => {
 
   return (
     <animated.div
-      style={{
+      css={{
         width: 0,
         height: 0,
         borderLeft: "75px solid transparent",
         borderRight: "75px solid transparent",
-        borderBottom: `129.88px solid ${on ? "#129793" : "#505050"}`,
+        borderBottom: `129.88px solid ${on ? "#129793" : "#505050"}`
+      }}
+      style={{
         transform: props.angle.interpolate(angle => `rotate(${angle}deg`)
       }}
     />

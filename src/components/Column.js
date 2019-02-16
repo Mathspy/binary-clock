@@ -1,8 +1,9 @@
-import React from "react";
+/** @jsx jsx */
+import { jsx } from "@emotion/core";
 
 const Column = ({ data, rightPad, Shape }) => (
   <div
-    style={{
+    css={{
       display: "flex",
       flexDirection: "column",
       justifyContent: "flex-end",

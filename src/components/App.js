@@ -1,4 +1,6 @@
-import React, { useState, useReducer, useEffect } from "react";
+/** @jsx jsx */
+import { jsx } from "@emotion/core";
+import { useState, useReducer, useEffect } from "react";
 
 import useInterval from "../hooks/useInterval";
 import useWindowSize from "../hooks/useWindowSize";
@@ -54,13 +56,13 @@ const App = () => {
 
   return (
     <div
-      style={{ height: "100%", transform: `scale(${scale})` }}
+      css={{ height: "100%", transform: `scale(${scale})` }}
       onClick={() => dispatch({ type: "changeDot" })}
     >
       <Clock time={time} Shape={dots[dotNames[state.dotIndex]]} />
       {state.popupVisibility && (
         <div
-          style={{
+          css={{
             position: "absolute",
             left: "50px",
             top: "50px",

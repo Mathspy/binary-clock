@@ -1,4 +1,5 @@
-import React from "react";
+/** @jsx jsx */
+import { jsx } from "@emotion/core";
 import { useSpring, animated } from "react-spring";
 
 const Pulse = ({ on }) => {
@@ -6,10 +7,12 @@ const Pulse = ({ on }) => {
 
   return (
     <animated.div
-      style={{
+      css={{
         width: "150px",
         height: "150px",
-        backgroundColor: on ? "#421C52" : "#732C7B",
+        backgroundColor: on ? "#421C52" : "#732C7B"
+      }}
+      style={{
         transform: props.scale
           .interpolate({
             range: [0, 0.5, 1],

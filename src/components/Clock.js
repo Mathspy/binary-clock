@@ -1,4 +1,5 @@
-import React from "react";
+/** @jsx jsx */
+import { jsx } from "@emotion/core";
 
 import Column from "./Column";
 
@@ -6,7 +7,7 @@ import timeInBinary from "../utils/timeInBinary";
 
 const Clock = ({ time, Shape }) => (
   <div
-    style={{
+    css={{
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
@@ -14,7 +15,7 @@ const Clock = ({ time, Shape }) => (
       height: "100%"
     }}
   >
-    <div style={{ display: "flex", alignItems: "stretch" }}>
+    <div css={{ display: "flex", alignItems: "stretch" }}>
       {timeInBinary(time).map((unit, i, { length: unitLength }) =>
         unit.map((column, j, { length: columnLength }) => (
           <Column

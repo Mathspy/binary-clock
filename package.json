@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://mathspy.github.io/binary-clock",
   "dependencies": {
+    "@emotion/core": "^10.0.7",
     "date-fns": "^2.0.0-alpha.27",
     "left-pad": "^1.3.0",
     "react": "^16.8.1",

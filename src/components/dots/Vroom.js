@@ -1,4 +1,5 @@
-import React from "react";
+/** @jsx jsx */
+import { jsx } from "@emotion/core";
 import { useSpring, animated } from "react-spring";
 
 const frontAndBack = {
@@ -17,27 +18,31 @@ const Vroom = ({ on }) => {
 
   return (
     <animated.div
-      style={{
+      css={{
         transformStyle: "preserve-3d",
         position: "relative",
         width: "150px",
-        height: "150px",
-        ...props
+        height: "150px"
       }}
+      style={props}
     >
       <div
-        style={{
-          ...frontAndBack,
-          backgroundColor: "#A8A8A8",
-          zIndex: 2
-        }}
+        css={[
+          frontAndBack,
+          {
+            backgroundColor: "#A8A8A8",
+            zIndex: 2
+          }
+        ]}
       />
       <div
-        style={{
-          ...frontAndBack,
-          transform: "rotate3d(45,45,0,180deg)",
-          backgroundColor: "#363636"
-        }}
+        css={[
+          frontAndBack,
+          {
+            transform: "rotate3d(45,45,0,180deg)",
+            backgroundColor: "#363636"
+          }
+        ]}
       />
     </animated.div>
   );
