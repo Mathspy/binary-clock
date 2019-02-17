@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
-import { useSpring, animated } from "react-spring";
+import { useSpring, animated, config } from "react-spring";
 
 const frontAndBack = {
   width: "150px",
@@ -14,7 +14,10 @@ const frontAndBack = {
 };
 
 const Vroom = ({ on }) => {
-  const props = useSpring({ transform: `rotateY(${on ? 180 : 0}deg)` });
+  const props = useSpring({
+    transform: `rotateY(${on ? 180 : 0}deg)`,
+    config: config.wobbly
+  });
 
   return (
     <animated.div

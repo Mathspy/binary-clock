@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
 import { useRef, useEffect } from "react";
-import { useSpring, animated } from "react-spring";
+import { useSpring, animated, config } from "react-spring";
 
 /*
   Explanation for Triangle's seemingly convoluted animation:
@@ -23,7 +23,8 @@ const Triangle = ({ on }) => {
     from: { angle: on ? 180 : 0 },
     to: { angle: on ? 360 : 180 },
     reset: previousState.current !== on,
-    immediate: dismissAnimation.current
+    immediate: dismissAnimation.current,
+    config: config.gentle
   });
 
   useEffect(() => {

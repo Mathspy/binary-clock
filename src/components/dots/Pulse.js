@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
-import { useSpring, animated } from "react-spring";
+import { useSpring, animated, config } from "react-spring";
 
 const Pulse = ({ on }) => {
-  const props = useSpring({ scale: on ? 1 : 0 });
+  const props = useSpring({ scale: on ? 1 : 0, config: config.stiff });
 
   return (
     <animated.div
