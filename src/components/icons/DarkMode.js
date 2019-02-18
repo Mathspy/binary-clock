@@ -1,5 +1,6 @@
-/** @jsx jsx */
-import { jsx } from "@emotion/core";
+import React from "react";
+
+import Icon from "./Icon";
 
 import useDarkMode from "../../hooks/useDarkMode";
 
@@ -7,9 +8,7 @@ const DarkMode = () => {
   const [isDarkMode, setDarkMode] = useDarkMode();
 
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
+    <Icon
       onClick={e => {
         e.stopPropagation();
         setDarkMode(() => !isDarkMode);
@@ -23,8 +22,7 @@ const DarkMode = () => {
       ) : (
         <path d="M7.673 2.79A9.9 9.9 0 0 1 10.4 1.456a10 10 0 0 0 10.877 15.676A10 10 0 1 1 7.673 2.79z" />
       )}
-      <path d="M0 0h24v24H0z" fill="none" />
-    </svg>
+    </Icon>
   );
 };
 

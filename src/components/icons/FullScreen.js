@@ -1,6 +1,7 @@
-/** @jsx jsx */
-import { jsx } from "@emotion/core";
+import React from "react";
 import fscreen from "fscreen";
+
+import Icon from "./Icon";
 
 import useIsFullscreen from "../../hooks/useIsFullscreen";
 import useDarkMode from "../../hooks/useDarkMode";
@@ -12,9 +13,7 @@ const FullScreen = ({ elementRef }) => {
   // Don't render if there is no fullscreen support
   return (
     fscreen.fullscreenEnabled && (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
+      <Icon
         onClick={e => {
           e.stopPropagation();
           if (!isFullscreen) {
@@ -32,7 +31,7 @@ const FullScreen = ({ elementRef }) => {
           }
           fill={isDarkMode ? "#fff" : "#000"}
         />
-      </svg>
+      </Icon>
     )
   );
 };

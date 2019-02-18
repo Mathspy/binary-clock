@@ -70,7 +70,6 @@ const App = () => {
           height: "48px",
           position: "absolute",
           right: 0,
-          cursor: "pointer",
           zIndex: 1,
           "& svg": {
             width: "50%"
