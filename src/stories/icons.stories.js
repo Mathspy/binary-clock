@@ -4,10 +4,13 @@ import { useRef } from "react";
 
 import { storiesOf } from "@storybook/react";
 import centered from "@storybook/addon-centered";
+import { withKnobs } from "@storybook/addon-knobs";
+import DarkModeKnobWrapper from "./DarkModeKnobWrapper";
 
 import FullScreen from "../components/icons/FullScreen";
+import DarkMode from "../components/icons/DarkMode";
 
-function FullScreenWrapper() {
+function IconWrapper({ Icon }) {
   const storyRef = useRef(null);
 
   return (
@@ -23,7 +26,9 @@ function FullScreenWrapper() {
       ref={storyRef}
     >
       <div css={{ width: "48px" }}>
-        <FullScreen elementRef={storyRef} />
+        <DarkModeKnobWrapper>
+          <Icon elementRef={storyRef} />
+        </DarkModeKnobWrapper>
       </div>
     </div>
   );
@@ -31,4 +36,6 @@ function FullScreenWrapper() {
 
 storiesOf("Icons", module)
   .addDecorator(centered)
-  .add("FullScreen Icon", () => <FullScreenWrapper />);
+  .addDecorator(withKnobs)
+  .add("FullScreen Icon", () => <IconWrapper Icon={FullScreen} />)
+  .add("DarkMode Icon", () => <IconWrapper Icon={DarkMode} />);
