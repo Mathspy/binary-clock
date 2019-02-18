@@ -12,7 +12,14 @@ const isFullScreen = () => {
     return () => fscreen.removeEventListener("fullscreenchange", handler);
   }, []);
 
-  return state;
+  const toggleFullScreen = el => {
+    if (!state) {
+      fscreen.requestFullscreen(el);
+    } else {
+      fscreen.exitFullscreen();
+    }
+  };
+  return [state, fscreen.fullscreenEnabled ? toggleFullScreen : undefined];
 };
 
 export default isFullScreen;

@@ -1,5 +1,4 @@
 import React from "react";
-import fscreen from "fscreen";
 
 import Icon from "./Icon";
 
@@ -7,19 +6,16 @@ import useIsFullscreen from "../../hooks/useIsFullscreen";
 import useDarkMode from "../../hooks/useDarkMode";
 
 const FullScreen = ({ elementRef }) => {
-  const isFullscreen = useIsFullscreen();
+  const [isFullscreen, toggleFullScreen] = useIsFullscreen();
   const [isDarkMode] = useDarkMode();
 
   // Don't render if there is no fullscreen support
   return (
-    fscreen.fullscreenEnabled && (
+    toggleFullScreen && (
       <Icon
         onClick={e => {
           e.stopPropagation();
-          if (!isFullscreen) {
-            return fscreen.requestFullscreen(elementRef.current);
-          }
-          return fscreen.exitFullscreen();
+          toggleFullScreen(elementRef.current);
         }}
       >
         <path d="M0 0h24v24H0z" fill="none" />
