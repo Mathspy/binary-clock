@@ -6,6 +6,7 @@ import useInterval from "../hooks/useInterval";
 import useWindowSize from "../hooks/useWindowSize";
 
 import Background from "./Background";
+import IconPanel from "./IconPanel";
 import Clock from "./Clock";
 import Popup from "./Popup";
 import * as dots from "./dots";
@@ -62,24 +63,11 @@ const App = () => {
 
   return (
     <Background onClick={() => dispatch({ type: "changeDot" })}>
-      <div
-        css={{
-          display: "flex",
-          flexDirection: "row",
-          width: "96px",
-          height: "48px",
-          position: "absolute",
-          right: 0,
-          zIndex: 1,
-          "& svg": {
-            width: "50%"
-          }
-        }}
-      >
+      <IconPanel>
         <DarkMode />
         {/* This is a pesudo-ref since API accepts a ref */}
         <FullScreen elementRef={{ current: document.body }} />
-      </div>
+      </IconPanel>
       <div css={{ height: "100%", transform: `scale(${scale})` }}>
         <Clock time={time} Shape={dots[dotNames[state.dotIndex]]} />
       </div>
