@@ -3,16 +3,18 @@ import { jsx } from "@emotion/core";
 import { useEffect } from "react";
 import { useSpring, animated, config } from "react-spring";
 
-const maxOffset = 27;
+const maxScale = 1;
+const coords = { x1: -4, y1: 7, x2: 28, y2: 8 };
+const angles = [-43.59, 136.41];
 
 const Heart = ({ on }) => {
   const [props, set] = useSpring(() => ({
-    offset: on ? 0 : maxOffset,
+    scale: on ? 0 : maxScale,
     config: config.slow
   }));
 
   useEffect(() => {
-    set({ offset: on ? 0 : maxOffset });
+    set({ scale: on ? 0 : maxScale });
   }, [on]);
 
   return (
@@ -24,36 +26,48 @@ const Heart = ({ on }) => {
             fill="#fff"
           />
         </mask>
-        <animated.line
-          x1={on ? 22 : 1.5}
-          y1={on ? 20 : 1.5}
-          x2={on ? 1.5 : 22}
-          y2={on ? 1.5 : 20}
-          mask="url(#123456)"
-          style={{
-            strokeDashoffset: props.offset.interpolate(
-              offset => maxOffset - offset
-            )
-          }}
-          css={{
-            stroke: "#334139",
-            strokeWidth: 30,
-            strokeDasharray: maxOffset
-          }}
-        />
-        <animated.line
-          x1={on ? 1.5 : 22}
-          y1={on ? 1.5 : 20}
-          x2={on ? 22 : 1.5}
-          y2={on ? 20 : 1.5}
-          mask="url(#123456)"
-          style={{ strokeDashoffset: props.offset }}
-          css={{
-            stroke: "#DC006E",
-            strokeWidth: 30,
-            strokeDasharray: maxOffset
-          }}
-        />
+        <g mask="url(#123456)">
+          <animated.rect
+            x={on ? coords.x2 : coords.x1}
+            y={on ? coords.y2 : coords.y1}
+            width={23}
+            height={23}
+            css={{
+              fill: "#334139",
+              transformOrigin: `${on ? coords.x2 : coords.x1}px ${
+                on ? coords.y2 : coords.y1
+              }px`
+            }}
+            style={{
+              transform: props.scale.interpolate(
+                scale =>
+                  `rotate(${on ? angles[1] : angles[0]}deg) scale(1, ${scale})`
+              )
+            }}
+          />
+        </g>
+        <g mask="url(#123456)">
+          <animated.rect
+            x={on ? coords.x1 : coords.x2}
+            y={on ? coords.y1 : coords.y2}
+            width={23}
+            height={23}
+            css={{
+              fill: "#DC006E",
+              transformOrigin: `${on ? coords.x1 : coords.x2}px ${
+                on ? coords.y1 : coords.y2
+              }px`
+            }}
+            style={{
+              transform: props.scale.interpolate(
+                scale =>
+                  `rotate(${
+                    on ? angles[0] : angles[1]
+                  }deg) scale(1, ${maxScale - scale})`
+              )
+            }}
+          />
+        </g>
       </svg>
     </div>
   );
