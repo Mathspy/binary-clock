@@ -2,7 +2,7 @@
   "name": "binary-clock",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://mathspy.mathspy.me/",
+  "homepage": "https://binary.mathspy.me/",
   "dependencies": {
     "@emotion/core": "^10.0.7",
     "date-fns": "^2.0.0-alpha.27",
@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "PUBLIC_URL=https://binary.mathspy.me/ react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "format": "prettier --ignore-path .gitignore --write '**/*.js'",
