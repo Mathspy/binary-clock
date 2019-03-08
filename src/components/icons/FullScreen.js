@@ -11,7 +11,7 @@ const FullScreen = ({ elementRef }) => {
 
   // Don't render if there is no fullscreen support
   return (
-    (toggleFullScreen && (
+    toggleFullScreen && (
       <Icon
         onClick={e => {
           e.stopPropagation();
@@ -28,8 +28,7 @@ const FullScreen = ({ elementRef }) => {
           fill={isDarkMode ? "#fff" : "#000"}
         />
       </Icon>
-    )) ||
-    null
+    )
   );
 };
 

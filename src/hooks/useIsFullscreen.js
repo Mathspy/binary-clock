@@ -19,7 +19,7 @@ const isFullScreen = () => {
       fscreen.exitFullscreen();
     }
   };
-  return [state, fscreen.fullscreenEnabled ? toggleFullScreen : undefined];
+  return [state, fscreen.fullscreenEnabled ? toggleFullScreen : null];
 };
 
 export default isFullScreen;
