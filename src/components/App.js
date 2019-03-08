@@ -64,9 +64,9 @@ const App = () => {
   return (
     <Background onClick={() => dispatch({ type: "changeDot" })}>
       <IconPanel>
-        <DarkMode />
         {/* This is a pesudo-ref since API accepts a ref */}
         <FullScreen elementRef={{ current: document.body }} />
+        <DarkMode />
       </IconPanel>
       <div css={{ height: "100%", transform: `scale(${scale})` }}>
         <Clock time={time} Shape={dots[dotNames[state.dotIndex]]} />

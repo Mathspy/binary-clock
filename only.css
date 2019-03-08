@@ -1,0 +1,62 @@
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pulse {
+  animation-name: pulse;
+  animation-duration: 0.25s;
+}
+
+.circle.vroom {
+  transform: rotate3d(0, 1, 0, 180deg);
+}
+
+.circle-container,
+.front,
+.back {
+  width: 150px;
+  height: 150px;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.circle {
+  transition: 0.5s;
+  transform-style: preserve-3d;
+  transition-timing-function: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+.circle {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+
+.front,
+.back {
+  border-radius: 50%;
+  /*box-shadow: 0px 0px 20px rgba(0,0,0,0.4);*/
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.front {
+  background-color: #a8a8a8;
+  z-index: 2;
+}
+
+.back {
+  transform: rotate3d(45, 45, 0, 180deg);
+  background-color: #363636;
+}
