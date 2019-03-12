@@ -3,7 +3,7 @@ import { jsx } from "@emotion/core";
 import { useRef } from "react";
 
 import { storiesOf } from "@storybook/react";
-import centered from "@storybook/addon-centered";
+import centered from "@storybook/addon-centered/react";
 import { withKnobs } from "@storybook/addon-knobs";
 import DarkModeKnobWrapper from "./DarkModeKnobWrapper";
 
