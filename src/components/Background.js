@@ -12,7 +12,10 @@ const Background = ({ children, ...props }) => {
   const style = useSpring({ background });
 
   useEffect(() => {
-    document.querySelector("meta[name=theme-color]").content = background;
+    const themeColor = document.querySelector("meta[name=theme-color]");
+    if (themeColor) {
+      themeColor.content = background;
+    }
   }, [background]);
 
   return (
